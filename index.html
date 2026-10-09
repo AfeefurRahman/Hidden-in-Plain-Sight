@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberCorp Employee Portal</title>
+
+    <style>
+        body {
+            background: #0d1117;
+            color: #00ff88;
+            font-family: monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            border: 1px solid #00ff88;
+            padding: 40px;
+            width: 400px;
+            text-align: center;
+        }
+
+        input {
+            width: 90%;
+            padding: 10px;
+            margin: 8px;
+            background: #161b22;
+            border: 1px solid #00ff88;
+            color: white;
+        }
+
+        button {
+            padding: 10px 25px;
+            background: #00ff88;
+            border: none;
+            cursor: pointer;
+        }
+
+        #message {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>CyberCorp</h1>
+    <h3>Employee Login</h3>
+
+    <input id="username" placeholder="Username">
+    <input id="password" type="password" placeholder="Password">
+
+    <br>
+
+    <button onclick="login()">Login</button>
+
+    <p id="message"></p>
+</div>
+
+<script>
+
+const accessCodes = [
+    "guest",
+    "employee",
+    "administrator"
+];
+
+const secret = "Q1RGe3ZpZXdfc291cmNlX2lzX3VzZWZ1bH0=";
+
+function login() {
+
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
+
+    if (username === "admin" && password === accessCodes[2]) {
+
+        document.getElementById("message").innerText =
+            "Access granted: " + atob(secret);
+
+    } else {
+
+        document.getElementById("message").innerText =
+            "Access denied.";
+
+    }
+}
+
+</script>
+
+</body>
+</html>
